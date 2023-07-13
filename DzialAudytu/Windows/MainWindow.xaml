@@ -5,51 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DzialAudytu"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1400" Background="#FF8E011B">
-    <Window.Effect>
-        <DropShadowEffect/>
-    </Window.Effect>
+        Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0">
-                <TextBlock Text="Komputery" 
-                           VerticalAlignment="Center" 
-                           HorizontalAlignment="Center" 
-                           Foreground="White" 
-                           FontSize="25"
-                           FontWeight="Bold"/>
-                <DataGrid  ItemsSource="{Binding ComputersTable}" 
-                           Foreground="Black"
-                           Background="White"
-                           FontWeight="Bold" 
-                           IsReadOnly="True" 
-                           ColumnWidth="*" 
-                           AutoGenerateColumns="True" 
-                           BorderThickness="0"/>
-            </StackPanel>
 
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <TextBlock Text="{Binding UserLogged}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontSize="25"></TextBlock>
-                <Button Grid.Row="1" Command="{Binding BuyersView}" Margin="10" Height="40" Width="220" Content="Manage Buyers" Background="White" Foreground="DarkRed" FontSize="25" FontWeight="Bold"></Button>
-                <Button Grid.Row="2" Command="{Binding Users}" Margin="10" Height="40" Width="220" Content="Manage Users" Background="White" Foreground="DarkRed" FontSize="25" FontWeight="Bold"></Button>
-                <Button Grid.Row="3" Command="{Binding Auctions}" Margin="10" Height="40" Width="220" Content="Manage Auctions" Background="White" Foreground="DarkRed" FontSize="25" FontWeight="Bold"></Button>
-            </Grid>
-
-                    
-
-
-        </Grid>
     </Grid>
-
 </Window>

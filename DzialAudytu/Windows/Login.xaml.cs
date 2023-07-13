@@ -11,8 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using DzialAudytu.ViewModels;
-using DzialAudytuBazaDanych;
 
 namespace DzialAudytu.Windows
 {
@@ -24,7 +22,6 @@ namespace DzialAudytu.Windows
         public Login()
         {
             InitializeComponent();
-            DataContext = new LoginViewModel(new DADbContext());
         }
     }
 }

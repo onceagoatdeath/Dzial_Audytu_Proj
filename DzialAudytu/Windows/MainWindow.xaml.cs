@@ -1,6 +1,4 @@
 ﻿using System.Windows;
-using DzialAudytu.ViewModels;
-using DzialAudytuBazaDanych;
 
 namespace DzialAudytu.Windows
 {
@@ -9,10 +7,9 @@ namespace DzialAudytu.Windows
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(string userlogged)
+        public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel(new DADbContext(), userlogged);
         }
     }
 }

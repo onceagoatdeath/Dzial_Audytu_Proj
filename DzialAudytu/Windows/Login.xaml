@@ -5,37 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DzialAudytu.Windows"
         mc:Ignorable="d"
-        Title="Login" Height="500" Width="500" Background="#FF8E011B">
-    <Window.Effect>
-        <DropShadowEffect/>
-    </Window.Effect>
+        Title="Login" Height="450" Width="800">
     <Grid>
-        <Grid>
-            
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <StackPanel Grid.RowSpan="2" VerticalAlignment="Center">
-                    <TextBlock Text="Dzial Audytu" 
-                               VerticalAlignment="Center" 
-                               HorizontalAlignment="Center" 
-                               Foreground="White" 
-                               FontSize="50"
-                               FontWeight="Bold"/>
-                </StackPanel>
-
-                <StackPanel Grid.RowSpan="4" VerticalAlignment="Bottom" Orientation="Vertical">
-                    <TextBlock Text="podaj Login i hasło" FontSize="23" Foreground="White" HorizontalAlignment="Center"></TextBlock>
-                    <TextBox Margin="10" Text="{Binding LOGIN}" Height="40" Width="300" FontSize="15"/>
-                    <TextBox Margin="10" Text="{Binding PASSWORD}" Height="40" Width="300"  FontSize="15"></TextBox>
-                </StackPanel>
-
-                <Button Grid.Row="4" Command="{Binding LoginCommand}" Margin="10" Height="50" Width="300" Content="ZALOGUJ" Background="White" Foreground="Black " FontSize="25" FontWeight="Bold" VerticalAlignment="Top">
-                </Button>
-            </Grid>
-        </Grid>
+        
+    </Grid>
 </Window>
