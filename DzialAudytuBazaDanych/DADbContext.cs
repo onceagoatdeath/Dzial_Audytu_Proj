@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DzialAudytuBazaDanych;
 
-
 public class DADbContext : DbContext
 {
     public DADbContext()
