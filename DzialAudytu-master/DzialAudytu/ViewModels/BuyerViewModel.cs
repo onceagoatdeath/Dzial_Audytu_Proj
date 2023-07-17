@@ -13,13 +13,14 @@ using System.Windows;
 using System.Windows.Input;
 using System.Security.Cryptography;
 
-
 namespace DzialAudytu.ViewModels
 {
+    /// Represents a view model for the Buyer view, providing functionality for interacting with the DADbContext.
     public class BuyerViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        /// Initializes a new instance of the <see cref="BuyerViewModel"/> class.
         public BuyerViewModel(DADbContext context)
         {
             _context = context;
@@ -27,7 +28,7 @@ namespace DzialAudytu.ViewModels
             AddElement = new RelayCommand(Add);
             RemoveElement = new RelayCommand(Remove);
         }
-
+        /// Handles the removal of an existing buyer element.
         private void Remove()
         {
             if (ID == null)
@@ -51,6 +52,7 @@ namespace DzialAudytu.ViewModels
 
         public RelayCommand RemoveElement { get; set; }
 
+        /// Handles the addition of a new buyer element.
         private void Add()
         {
             if (Username == null || Password == null)
@@ -71,18 +73,12 @@ namespace DzialAudytu.ViewModels
             Password = "";
         }
 
+        /// Invokes the PropertyChanged event when a property value changes.
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-            field = value;
-            OnPropertyChanged(propertyName);
-            return true;
-        }
 
         private ObservableCollection<Buyer> _table;
         private readonly DADbContext _context;
@@ -145,6 +141,7 @@ namespace DzialAudytu.ViewModels
             }
         }
 
+        /// Displays the list of buyers in the view.
         public void DisplayComputerTable()
         {
             Show = new ObservableCollection<Buyer>(_context.Set<Buyer>().ToList());

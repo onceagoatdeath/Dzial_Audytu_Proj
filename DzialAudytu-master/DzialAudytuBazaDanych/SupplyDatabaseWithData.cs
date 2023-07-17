@@ -2,15 +2,18 @@
 
 namespace DzialAudytuBazaDanych;
 
+/// Provides methods to seed data into the DADbContext for various entities.
 public class SupplyDatabaseWithData
 {
     private readonly DADbContext _context;
 
+    /// Initializes a new instance of the <see cref="SupplyDatabaseWithData"/> class.
     public SupplyDatabaseWithData(DADbContext context)
     {
         _context = context;
     }
 
+    /// Seeds the database with initial data.
     public void SeedDatabase()
     {
         SeedUsers();
@@ -20,13 +23,16 @@ public class SupplyDatabaseWithData
         SeedBuyers();
     }
 
+    /// Seeds the Users table if it is empty.
     private void SeedUsers()
     {
         if (_context.Users.Any()) return;
 
         var users = new List<User>
         {
-            new() { Username = "user", Password = "1234" }
+            new() { Username = "user1", Password = "password1" },
+            new() { Username = "user2", Password = "password2" },
+            new() { Username = "user3", Password = "password3" }
         };
 
         _context.Users.AddRange(users);
@@ -34,7 +40,8 @@ public class SupplyDatabaseWithData
         _context.SaveChanges();
     }
 
-    public void SeedComputers()
+    /// Seeds the Computers table if it is empty.
+    private void SeedComputers()
     {
         if (_context.Computers.Any()) return;
 
@@ -43,7 +50,7 @@ public class SupplyDatabaseWithData
             new()
             {
                 DataWprowadzenia = DateTime.Now,
-                Producent = "Dell",
+                Producent = "Company A",
                 CPU = "Intel Core i5",
                 RAM = 8,
                 KartaGraficzna = "NVIDIA GeForce GTX 1050",
@@ -55,7 +62,7 @@ public class SupplyDatabaseWithData
             new()
             {
                 DataWprowadzenia = DateTime.Now,
-                Producent = "Dell",
+                Producent = "Company B",
                 CPU = "AMD Ryzen 7",
                 RAM = 16,
                 KartaGraficzna = "AMD Radeon RX 5700",
@@ -67,7 +74,7 @@ public class SupplyDatabaseWithData
             new()
             {
                 DataWprowadzenia = DateTime.Now,
-                Producent = "Acer",
+                Producent = "Company C",
                 CPU = "Intel Core i7",
                 RAM = 32,
                 KartaGraficzna = "NVIDIA GeForce RTX 3080",
@@ -79,7 +86,7 @@ public class SupplyDatabaseWithData
             new Computer
             {
             DataWprowadzenia = DateTime.Now,
-            Producent = "Acer",
+            Producent = "Company C",
             CPU = "Intel Core i7",
             RAM = 16,
             KartaGraficzna = "NVIDIA GeForce RTX 2060",
@@ -92,7 +99,7 @@ public class SupplyDatabaseWithData
         new Computer
         {
             DataWprowadzenia = DateTime.Now,
-            Producent = "Asus",
+            Producent = "Company D",
             CPU = "AMD Ryzen 5",
             RAM = 8,
             KartaGraficzna = "NVIDIA GeForce GTX 1660",
@@ -105,7 +112,7 @@ public class SupplyDatabaseWithData
         new Computer
         {
             DataWprowadzenia = DateTime.Now,
-            Producent = "Asus",
+            Producent = "Company E",
             CPU = "Intel Core i9",
             RAM = 32,
             KartaGraficzna = "NVIDIA GeForce RTX 3080",
@@ -118,7 +125,7 @@ public class SupplyDatabaseWithData
         new Computer
         {
             DataWprowadzenia = DateTime.Now,
-            Producent = "Fujitsu",
+            Producent = "Company F",
             CPU = "AMD Ryzen 9",
             RAM = 32,
             KartaGraficzna = "AMD Radeon RX 6800 XT",
@@ -131,7 +138,7 @@ public class SupplyDatabaseWithData
         new Computer
         {
             DataWprowadzenia = DateTime.Now,
-            Producent = "Fujitsu",
+            Producent = "Company G",
             CPU = "Intel Core i5",
             RAM = 8,
             KartaGraficzna = "NVIDIA GeForce GTX 1650",
@@ -144,7 +151,7 @@ public class SupplyDatabaseWithData
         new Computer
         {
             DataWprowadzenia = DateTime.Now,
-            Producent = "Fujitsu",
+            Producent = "Company H",
             CPU = "AMD Ryzen 7",
             RAM = 16,
             KartaGraficzna = "AMD Radeon RX 6700 XT",
@@ -157,7 +164,7 @@ public class SupplyDatabaseWithData
         new Computer
         {
             DataWprowadzenia = DateTime.Now,
-            Producent = "Lenovo",
+            Producent = "Company I",
             CPU = "Intel Core i7",
             RAM = 16,
             KartaGraficzna = "NVIDIA GeForce RTX 3070",
@@ -170,31 +177,7 @@ public class SupplyDatabaseWithData
         new Computer
         {
             DataWprowadzenia = DateTime.Now,
-            Producent = "Lenovo",
-            CPU = "AMD Ryzen 5",
-            RAM = 8,
-            KartaGraficzna = "NVIDIA GeForce GTX 1660 Ti",
-            Dysk = "512GB SSD",
-            Klasa = "A",
-            Aukcja = 10,
-            DataAudytu = DateTime.Now
-        },
-        new Computer
-        {
-            DataWprowadzenia = DateTime.Now,
-            Producent = "Lenovo",
-            CPU = "AMD Ryzen 5",
-            RAM = 8,
-            KartaGraficzna = "NVIDIA GeForce GTX 1660 Ti",
-            Dysk = "512GB SSD",
-            Klasa = "A",
-            Aukcja = 10,
-            DataAudytu = DateTime.Now
-        },
-        new Computer
-        {
-            DataWprowadzenia = DateTime.Now,
-            Producent = "Lenovo",
+            Producent = "Company J",
             CPU = "AMD Ryzen 5",
             RAM = 8,
             KartaGraficzna = "NVIDIA GeForce GTX 1660 Ti",
@@ -207,7 +190,7 @@ public class SupplyDatabaseWithData
         new Computer
         {
             DataWprowadzenia = DateTime.Now,
-            Producent = "Lenovo",
+            Producent = "Company K",
             CPU = "Intel Core i9",
             RAM = 32,
             KartaGraficzna = "NVIDIA GeForce RTX 3090",
@@ -220,7 +203,7 @@ public class SupplyDatabaseWithData
         new Computer
         {
             DataWprowadzenia = DateTime.Now,
-            Producent = "Hp",
+            Producent = "Company L",
             CPU = "AMD Ryzen 9",
             RAM = 32,
             KartaGraficzna = "AMD Radeon RX 6900 XT",
@@ -233,7 +216,7 @@ public class SupplyDatabaseWithData
         new Computer
         {
             DataWprowadzenia = DateTime.Now,
-            Producent = "Hp",
+            Producent = "Company M",
             CPU = "Intel Core i5",
             RAM = 8,
             KartaGraficzna = "NVIDIA GeForce GTX 1050 Ti",
@@ -246,31 +229,7 @@ public class SupplyDatabaseWithData
         new Computer
         {
             DataWprowadzenia = DateTime.Now,
-            Producent = "Hp",
-            CPU = "AMD Ryzen 7",
-            RAM = 16,
-            KartaGraficzna = "AMD Radeon RX 580",
-            Dysk = "512GB SSD",
-            Klasa = "A",
-            Aukcja = 14,
-            DataAudytu = DateTime.Now
-        },
-        new Computer
-        {
-            DataWprowadzenia = DateTime.Now,
-            Producent = "Hp",
-            CPU = "AMD Ryzen 7",
-            RAM = 16,
-            KartaGraficzna = "AMD Radeon RX 580",
-            Dysk = "512GB SSD",
-            Klasa = "A",
-            Aukcja = 14,
-            DataAudytu = DateTime.Now
-        },
-        new Computer
-        {
-            DataWprowadzenia = DateTime.Now,
-            Producent = "Hp",
+            Producent = "Company N",
             CPU = "AMD Ryzen 7",
             RAM = 16,
             KartaGraficzna = "AMD Radeon RX 580",
@@ -283,7 +242,7 @@ public class SupplyDatabaseWithData
         new Computer
         {
             DataWprowadzenia = DateTime.Now,
-            Producent = "Hp",
+            Producent = "Company O",
             CPU = "Intel Core i7",
             RAM = 16,
             KartaGraficzna = "NVIDIA GeForce RTX 3060",
@@ -296,7 +255,7 @@ public class SupplyDatabaseWithData
         new Computer
         {
             DataWprowadzenia = DateTime.Now,
-            Producent = "Dell",
+            Producent = "Company P",
             CPU = "AMD Ryzen 5",
             RAM = 8,
             KartaGraficzna = "NVIDIA GeForce GTX 1660 Super",
@@ -309,7 +268,7 @@ public class SupplyDatabaseWithData
         new Computer
         {
             DataWprowadzenia = DateTime.Now,
-            Producent = "Dell",
+            Producent = "Company Q",
             CPU = "Intel Core i9",
             RAM = 32,
             KartaGraficzna = "NVIDIA GeForce RTX 3080 Ti",
@@ -322,31 +281,7 @@ public class SupplyDatabaseWithData
         new Computer
         {
             DataWprowadzenia = DateTime.Now,
-            Producent = "Dell",
-            CPU = "AMD Ryzen 9",
-            RAM = 32,
-            KartaGraficzna = "AMD Radeon RX 6800",
-            Dysk = "1TB SSD",
-            Klasa = "A",
-            Aukcja = 18,
-            DataAudytu = DateTime.Now
-        },
-        new Computer
-        {
-            DataWprowadzenia = DateTime.Now,
-            Producent = "Dell",
-            CPU = "AMD Ryzen 9",
-            RAM = 32,
-            KartaGraficzna = "AMD Radeon RX 6800",
-            Dysk = "1TB SSD",
-            Klasa = "A",
-            Aukcja = 18,
-            DataAudytu = DateTime.Now
-        },
-        new Computer
-        {
-            DataWprowadzenia = DateTime.Now,
-            Producent = "Dell",
+            Producent = "Company R",
             CPU = "AMD Ryzen 9",
             RAM = 32,
             KartaGraficzna = "AMD Radeon RX 6800",
@@ -362,7 +297,8 @@ public class SupplyDatabaseWithData
         _context.SaveChanges();
     }
 
-    public void SeedClasses()
+    /// Seeds the Classes table if it is empty.
+    private void SeedClasses()
     {
         if (_context.Classes.Any()) return;
 
@@ -378,15 +314,16 @@ public class SupplyDatabaseWithData
         _context.SaveChanges();
     }
 
-    public void SeedBuyers()
+    /// Seeds the Buyers table if it is empty.
+    private void SeedBuyers()
     {
         if (_context.Buyers.Any()) return;
 
         var buyers = new List<Buyer>
         {
-            new() { Username = "userX", Password = "1234" },
-            new() { Username = "userY", Password = "1234" },
-            new() { Username = "userZ", Password = "1234" }
+            new() { Username = "buyer1", Password = "password1" },
+            new() { Username = "buyer2", Password = "password2" },
+            new() { Username = "buyer3", Password = "password3" }
         };
 
         _context.Buyers.AddRange(buyers);
@@ -394,15 +331,16 @@ public class SupplyDatabaseWithData
         _context.SaveChanges();
     }
 
-    public void SeedAuctions()
+    /// Seeds the Auctions table if it is empty.
+    private void SeedAuctions()
     {
         if (_context.Auctions.Any()) return;
 
         var auctions = new List<Auction>
         {
-            new() { Opis = "Aukcja 1", CenaPogladowa = 100 },
-            new() { Opis = "Aukcja 2", CenaPogladowa = 200 },
-            new() { Opis = "Aukcja 3", CenaPogladowa = 300 }
+            new() { Opis = "Auction 1", CenaPogladowa = 100 },
+            new() { Opis = "Auction 2", CenaPogladowa = 200 },
+            new() { Opis = "Auction 3", CenaPogladowa = 300 }
         };
 
         _context.Auctions.AddRange(auctions);

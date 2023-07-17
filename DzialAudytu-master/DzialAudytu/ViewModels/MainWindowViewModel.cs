@@ -13,13 +13,14 @@ using DzialAudytu.Windows;
 using DzialAudytuBazaDanych;
 using DzialAudytuBazaDanych.Tabele;
 
-
 namespace DzialAudytu.ViewModels
 {
+    /// Represents a view model for the MainWindow view, providing functionality for displaying computer tables and navigating to other views.
     public class MainWindowViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        /// Initializes a new instance of the <see cref="MainWindowViewModel"/> class.
         public MainWindowViewModel(DADbContext context, string userLogged)
         {
             _context = context;
@@ -34,18 +35,12 @@ namespace DzialAudytu.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-            field = value;
-            OnPropertyChanged(propertyName);
-            return true;
-        }
 
         private ObservableCollection<Computer> _computersTable;
         private readonly DADbContext _context;
         private string _userLogged;
 
+        /// Gets or sets the collection of computers to display in the table.
         public ObservableCollection<Computer> ComputersTable
         {
             get => _computersTable;
@@ -71,11 +66,13 @@ namespace DzialAudytu.ViewModels
             }
         }
 
+        /// Displays the computer table by fetching the data from the DADbContext.
         public void DisplayComputerTable()
         {
             ComputersTable = new ObservableCollection<Computer>(_context.Set<Computer>().ToList());
         }
 
+        /// Navigates to the BuyersView to display the list of buyers.
         private void CustomersTableShow()
         {
             var window = new BuyersView();
@@ -83,6 +80,7 @@ namespace DzialAudytu.ViewModels
             window.Show();
         }
 
+        /// Navigates to the UsersView to display the list of users.
         private void UsersTableShow()
         {
             var window = new UsersView();
@@ -90,14 +88,21 @@ namespace DzialAudytu.ViewModels
             window.Show();
         }
 
+        /// Navigates to the AuctionView to display the list of auctions.
         private void AuctionsTableShow()
         {
             var window = new AuctionView();
             Application.Current.MainWindow = window;
             window.Show();
         }
+
+        /// Gets the command to navigate to the BuyersView.
         public ICommand BuyersView { get; }
+
+        /// Gets the command to navigate to the UsersView.
         public ICommand UsersView { get; }
+
+        /// Gets the command to navigate to the AuctionView.
         public ICommand AuctionView { get; }
 
     }

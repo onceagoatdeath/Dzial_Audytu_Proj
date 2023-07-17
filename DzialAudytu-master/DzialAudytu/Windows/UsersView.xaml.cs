@@ -17,6 +17,8 @@ using DzialAudytuBazaDanych;
 namespace DzialAudytu.Windows
 {
 
+    /// Interaction logic for UsersView.xaml
+
     public partial class UsersView : Window
     {
         public UsersView()

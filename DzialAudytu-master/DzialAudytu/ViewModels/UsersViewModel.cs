@@ -11,13 +11,14 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
 
-
 namespace DzialAudytu.ViewModels
 {
+    /// Represents a view model for managing users, providing functionality for displaying and editing the user table.
      public class UsersViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        /// Initializes a new instance of the <see cref="UsersViewModel"/> class.
         public UsersViewModel(DADbContext context)
         {
             _context = context;
@@ -26,6 +27,7 @@ namespace DzialAudytu.ViewModels
             RemoveElement = new RelayCommand(Remove);
         }
 
+        /// Removes a user from the table based on the provided ID.
         private void Remove()
         {
             if (ID == null)
@@ -49,6 +51,7 @@ namespace DzialAudytu.ViewModels
 
         public RelayCommand RemoveElement { get; set; }
 
+        /// Adds a new user to the table using the provided username and password.
         private void Add()
         {
             if (Username == null || Password == null)
@@ -72,14 +75,6 @@ namespace DzialAudytu.ViewModels
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-            field = value;
-            OnPropertyChanged(propertyName);
-            return true;
         }
 
         private ObservableCollection<User> _table;

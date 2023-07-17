@@ -17,6 +17,8 @@ using DzialAudytuBazaDanych;
 namespace DzialAudytu.Windows
 {
 
+    /// Interaction logic for Login.xaml
+
     public partial class Login : Window
     {
         public Login()

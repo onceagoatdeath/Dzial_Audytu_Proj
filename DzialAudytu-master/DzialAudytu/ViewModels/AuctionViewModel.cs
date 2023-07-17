@@ -11,13 +11,17 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
 
-
 namespace DzialAudytu.ViewModels
 {
+
+    /// Represents a view model for the Auction view, providing functionality for interacting with the DADbContext.
+
     public class AuctionViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
+   
+        /// Initializes a new instance of the <see cref="AuctionViewModel"/> class.
         public AuctionViewModel(DADbContext context)
         {
             _context = context;
@@ -25,6 +29,8 @@ namespace DzialAudytu.ViewModels
             AddElement = new RelayCommand(Add);
             RemoveElement = new RelayCommand(Remove);
         }
+
+        /// Handles the removal of an existing auction element.
 
         private void Remove()
         {
@@ -49,6 +55,7 @@ namespace DzialAudytu.ViewModels
 
         public RelayCommand RemoveElement { get; set; }
 
+        /// Handles the addition of a new auction element.
         private void Add()
         {
             if (Opis == null || CenaPodgladowa == null)
@@ -84,14 +91,6 @@ namespace DzialAudytu.ViewModels
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-            field = value;
-            OnPropertyChanged(propertyName);
-            return true;
         }
 
         private ObservableCollection<Auction> _table;
@@ -155,6 +154,7 @@ namespace DzialAudytu.ViewModels
             }
         }
 
+        /// Displays the list of auctions in the view.
         public void DisplayComputerTable()
         {
             Show = new ObservableCollection<Auction>(_context.Set<Auction>().ToList());

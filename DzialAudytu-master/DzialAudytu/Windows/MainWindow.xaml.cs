@@ -4,6 +4,7 @@ using DzialAudytuBazaDanych;
 
 namespace DzialAudytu.Windows
 {
+ /// Interaction logic for MainWindow.xaml
 
     public partial class MainWindow : Window
     {

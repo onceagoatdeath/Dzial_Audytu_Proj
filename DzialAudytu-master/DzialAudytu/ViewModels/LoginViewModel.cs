@@ -10,9 +10,9 @@ using System.Windows.Input;
 using DzialAudytu.Windows;
 using DzialAudytuBazaDanych;
 
-
 namespace DzialAudytu.ViewModels
 {
+    /// Represents a view model for the Login view, providing functionality for user authentication using the DADbContext.
     internal class LoginViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -22,14 +22,7 @@ namespace DzialAudytu.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected bool SetField<T>(ref T field, T value, [CallerMemberName] string? propertyName = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-            field = value;
-            OnPropertyChanged(propertyName);
-            return true;
-        }
-
+        /// Initializes a new instance of the <see cref="LoginViewModel"/> class.
         public LoginViewModel(DADbContext context)
         {
             _context = context;
@@ -71,6 +64,8 @@ namespace DzialAudytu.ViewModels
         }
 
         public ICommand LoginCommand { get; }
+
+        /// Handles the login operation, attempting to authenticate the user.
         private void Login()
         {
             var user = _context.Users.FirstOrDefault(x => x.Username == LOGIN && x.Password == PASSWORD);

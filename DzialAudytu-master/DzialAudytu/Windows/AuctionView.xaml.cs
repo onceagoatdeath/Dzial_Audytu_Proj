@@ -16,7 +16,7 @@ using DzialAudytuBazaDanych;
 
 namespace DzialAudytu.Windows
 {
-
+    /// Interaction logic for AuctionView.xaml
     public partial class AuctionView : Window
     {
         public AuctionView()
